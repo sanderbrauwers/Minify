@@ -1,0 +1,134 @@
+#navigationTop.navbar
+  line-height: 50px
+  vertical-align: middle
+  background-color: #FDFDFD
+  border-color: #E7E7E7
+  >a.navbar-logo
+    float: left
+    margin-left: 85px
+  >.navbar-user
+    float: right
+    margin: 0
+    display: inline
+    height: 50px
+    font-size: 20px
+    text-align: right
+    margin: 0
+    >li
+      display: inline-block
+      border-left: 1px solid #e3e3e3
+      +transition(all, 0.2s)
+      >a
+        color: #707070
+        display: inline-block
+        text-decoration: none
+        display: block
+        padding: 0 20px
+        >.navbar-username
+          font-size: 16px
+          padding-right: 10px
+          text-transform: capitalize
+      &:hover
+        background-color: #FFF
+      &.dropdown
+        ul.dropdown-menu
+          margin: 0
+          right: 0
+          left: auto
+          +border-radius(0)
+          +box-shadow(rgba(#999999, 0.15) 0 5px 10px)
+          border: none
+          li
+            a
+              color: #707070
+              &:hover
+                background: $light-grey
+
+footer
+  position: fixed
+  bottom: 0
+  width: 100%
+  background: $light-background
+  padding: 15px 35px
+  height: 50px
+
+#content
+  margin: 0
+  nav
+    #navigation
+      li
+        a
+          border-bottom: 1px solid #e1e1e1
+          font-size: 15px
+          color: #707070
+          +transition(all, 0.2s)
+          >i
+            margin-right: 10px
+            font-size: 18px
+            text-align: left
+          &:hover
+            color: $dark-green
+            background: $light-grey
+
+.breadcrumb
+  background: $light-green
+  border-left: 5px solid $dark-green
+  color: #FFF
+  text-align: right
+  +border-radius(0)
+
+caption, .messageHeader
+  background: #F0F0F0
+  padding: 7px 10px
+  text-align: left
+  margin-bottom: 20px
+
+.headline
+  border-bottom: 2px solid #ebebeb
+  margin-bottom: 20px
+
+  h3
+    display: inline-block
+    position: relative
+    bottom: -2px
+    margin: 0
+    padding: 0
+    color: #555
+    text-shadow: 0 0 1px #f6f6f6
+    font-size: 22px
+    text-decoration: none
+    border-bottom: 2px solid $light-green
+    font-weight: normal
+    padding: 0 20px 0 0
+    font-family: 'Open Sans', sans-serif
+    height: 35px
+  h1
+    display: inline-block
+    position: relative
+    bottom: -2px
+    margin: 0
+    padding: 0
+    color: #555
+    text-shadow: 0 0 1px #f6f6f6
+    text-decoration: none
+    border-bottom: 2px solid $light-green
+    font-weight: normal
+    padding: 0 20px 0 0
+    font-family: 'Open Sans', sans-serif
+    height: 50px  
+
+.messageContent
+  .messageTopic
+    .messageSingleTopic
+      margin: 15px 0
+      background: #FFF
+      border-top: 1px solid #DDD
+
+/*Removing spinboxes
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  /* display: none; <- Crashes Chrome on hover
+  -webkit-appearance: none
+  margin: 0
+  /* <-- Apparently some margin are still there even though it's hidden

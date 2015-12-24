@@ -1,0 +1,69 @@
+body
+  background: $light-background
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  padding: 70px 0
+
+a
+  color: $link-normal
+  &:hover
+    color: $link-hover
+    text-decoration: none
+
+.row
+  margin: 0
+
+// FORMS
+label
+  margin-bottom: 5px
+  margin-top: 15px
+  &:first-child
+    margin-top: 0
+
+.form-control
+  &:focus
+    +box-shadow(none)
+    border-color: $light-green
+
+.form-date
+  .form-date-single
+    width: 32.5%
+    +inline-block
+
+.btn-dark
+  color: #FFF
+  background-color: #474949
+  border-color: #474949
+  background-image: none
+  box-shadow: none
+  &:hover
+    color: #FFF
+    background-color: #3a3c3c
+    border-color: #2e2f2f
+.btn-green
+  color: #FFF
+  background: $dark-green
+  &:hover
+    color: #FFF
+    background: $light-green
+//bootstrap extensions
+
+.bs-callout
+  margin: 20px 0
+  padding: 20px
+  border-left: 3px solid #eee
+.bs-callout-danger
+  background-color: #fdf7f7
+  border-color: #d9534f
+.bs-callout-danger h4
+  color: #d9534f
+.bs-callout h4
+  margin-top: 0
+  margin-bottom: 5px
+.panel
+  .panel-heading
+    background: $light-grey
+    border-bottom: 1px solid #e1e1e1
+.nav-tabs
+  margin-bottom: 25px
