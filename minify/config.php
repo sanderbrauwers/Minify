@@ -19,7 +19,3 @@ define('HASH_PASSWORD_KEY', 'catsFLYhigh2000miles');
 
 define('UPLOAD_FOLDER', 'uploads/images/'); 
 define('LIBS', 'libs/'); 
-
-/*Minify configs*/
-define('MINI_HEADER', 'views/header.php');
-define('MINI_FOOTER', 'views/footer.php');

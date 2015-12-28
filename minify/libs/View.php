@@ -16,9 +16,9 @@ class View {
 				require_once $filepath;
 				
 			}else{
-				require_once MINI_HEADER;
+				require_once "views/header.php";
 				require_once $filepath;
-				require_once MINI_FOOTER;
+				require_once "views/footer.php";
 			}
 		  
 		}else{
