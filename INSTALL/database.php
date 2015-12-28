@@ -30,7 +30,7 @@
 	if (isset($_POST['submit'])) {
 
 		$myFile = "../minify/config.php";
-		$fh = fopen($myFile, 'w') or die("can't open file");
+		$fh = fopen($myFile, 'w') or die("can't open config.php file");
 
 		fwrite($fh, "<?php \n\n");
 		fwrite($fh, "date_default_timezone_set('Europe/Belgrade'); \n\n");
