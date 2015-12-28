@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `userid` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `add_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modify_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `add_date` timestamp NOT NULL DEFAULT 0,
+  `modify_date` timestamp NOT NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
   `is_active` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`blogid`),
   KEY `userid` (`userid`)
@@ -208,8 +208,8 @@ CREATE TABLE IF NOT EXISTS `page` (
   `title` varchar(50) NOT NULL,
   `title_alias` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `modify_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `add_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `modify_date` timestamp NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
+  `add_date` timestamp NULL DEFAULT 0,
   PRIMARY KEY (`pageid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -300,8 +300,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(64) DEFAULT NULL,
   `role` enum('normal','admin','owner') DEFAULT 'normal',
   `gender` enum('Male','Female') NOT NULL,
-  `lastvisit_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `add_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `lastvisit_date` timestamp NULL DEFAULT 0,
+  `add_date` timestamp NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;

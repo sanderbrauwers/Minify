@@ -7,7 +7,7 @@ class Database extends PDO{
 		}catch (Exception $e){
 
 		  $_GET['headmsg'] = "Oh snap";
-		  $_GET['msg'] = 'Could not create database object, check the config.php file.';
+		  $_GET['msg'] = 'Could not connect to database, check the config.php file.';
 
 		  include './views/error/header.php';
 
