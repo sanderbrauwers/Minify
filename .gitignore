@@ -1,2 +1,5 @@
 /minify/uploads/images
 /minify/plugins
+
+*.json
+!spec/*.json
