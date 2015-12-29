@@ -9,7 +9,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
+IndexIgnore *
+Options -Indexes 
+
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
 
 #max file size
 #php_value upload_max_filesize 5M

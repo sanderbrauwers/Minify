@@ -17,6 +17,8 @@ class Bootstrap {
 	public function init(){
 		// Sets the protected $_url
 		$this->_getUrl();
+
+    
 		
 		// Load the default controller if no URL is set
 		// eg: Visit http://localhost it loads Default Controller

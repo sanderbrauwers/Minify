@@ -1,14 +1,19 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server versie:                5.6.12-log - MySQL Community Server (GPL)
+-- Server versie:                5.6.17 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Versie:              8.3.0.4694
+-- HeidiSQL Versie:              9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Databasestructuur van minifydb wordt geschreven
+CREATE DATABASE IF NOT EXISTS `minifydb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `minifydb`;
+
 
 -- Structuur van  tabel minifydb.blog wordt geschreven
 CREATE TABLE IF NOT EXISTS `blog` (
@@ -16,8 +21,8 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `userid` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `add_date` timestamp NOT NULL DEFAULT 0,
-  `modify_date` timestamp NOT NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
+  `add_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modify_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `is_active` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`blogid`),
   KEY `userid` (`userid`)
@@ -73,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   UNIQUE KEY `imageid` (`imageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.image: ~3 rows (ongeveer)
+-- Dumpen data van tabel minifydb.image: ~5 rows (ongeveer)
 DELETE FROM `image`;
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
 INSERT INTO `image` (`imageid`, `title`, `description`, `add_date`, `type`, `ext`, `width`, `height`, `size`, `link`) VALUES
@@ -128,9 +133,9 @@ CREATE TABLE IF NOT EXISTS `mini_log` (
   `data` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`logid`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.mini_log: ~11 rows (ongeveer)
+-- Dumpen data van tabel minifydb.mini_log: ~18 rows (ongeveer)
 DELETE FROM `mini_log`;
 /*!40000 ALTER TABLE `mini_log` DISABLE KEYS */;
 INSERT INTO `mini_log` (`logid`, `userid`, `action`, `type`, `ipadress`, `date`, `link`, `data`) VALUES
@@ -149,7 +154,14 @@ INSERT INTO `mini_log` (`logid`, `userid`, `action`, `type`, `ipadress`, `date`,
 	(17, 11, 'logged in', 'user', '::1', '2014-03-25 17:36:45', NULL, NULL),
 	(18, 11, 'logged in', 'user', '::1', '2014-04-05 14:46:22', NULL, NULL),
 	(19, 11, 'logged in', 'user', '::1', '2014-06-13 22:34:55', NULL, NULL),
-	(20, 11, 'logged in', 'user', '::1', '2014-06-17 18:46:22', NULL, NULL);
+	(20, 11, 'logged in', 'user', '::1', '2014-06-17 18:46:22', NULL, NULL),
+	(21, 11, 'logged in', 'user', '::1', '2015-12-28 20:07:39', NULL, NULL),
+	(22, 11, 'logged in', 'user', '::1', '2015-12-28 20:46:54', NULL, NULL),
+	(23, 11, 'logged in', 'user', '::1', '2015-12-29 10:08:17', NULL, NULL),
+	(24, 11, 'logged in', 'user', '::1', '2015-12-29 10:09:05', NULL, NULL),
+	(25, 11, 'logged in', 'user', '::1', '2015-12-29 12:59:15', NULL, NULL),
+	(26, 11, 'logged in', 'user', '::1', '2015-12-29 16:17:36', NULL, NULL),
+	(27, 11, 'logged in', 'user', '::1', '2015-12-29 16:37:09', NULL, NULL);
 /*!40000 ALTER TABLE `mini_log` ENABLE KEYS */;
 
 
@@ -159,16 +171,19 @@ CREATE TABLE IF NOT EXISTS `mini_modules` (
   `name` varchar(50) NOT NULL,
   `is_active` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`moduleid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.mini_modules: ~4 rows (ongeveer)
+-- Dumpen data van tabel minifydb.mini_modules: ~6 rows (ongeveer)
 DELETE FROM `mini_modules`;
 /*!40000 ALTER TABLE `mini_modules` DISABLE KEYS */;
 INSERT INTO `mini_modules` (`moduleid`, `name`, `is_active`) VALUES
-	(1, 'blog', 'true'),
+	(1, 'blog', 'false'),
 	(2, 'product', 'false'),
-	(3, 'page', 'true'),
-	(4, 'purchase', 'false');
+	(3, 'page', 'false'),
+	(4, 'purchase', 'false'),
+	(5, 'teamspeak', 'true'),
+	(6, 'image', 'false'),
+	(7, 'user', 'false');
 /*!40000 ALTER TABLE `mini_modules` ENABLE KEYS */;
 
 
@@ -208,8 +223,8 @@ CREATE TABLE IF NOT EXISTS `page` (
   `title` varchar(50) NOT NULL,
   `title_alias` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `modify_date` timestamp NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
-  `add_date` timestamp NULL DEFAULT 0,
+  `modify_date` timestamp NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `add_date` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`pageid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -280,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `purchase` (
   PRIMARY KEY (`purchaseid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.purchase: ~0 rows (ongeveer)
+-- Dumpen data van tabel minifydb.purchase: ~3 rows (ongeveer)
 DELETE FROM `purchase`;
 /*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
 INSERT INTO `purchase` (`purchaseid`, `title`, `description`, `imageid`, `unit_box`, `purchase_price`, `purchase_price_btw`, `retail_price`, `stock_quantity`) VALUES
@@ -288,6 +303,21 @@ INSERT INTO `purchase` (`purchaseid`, `title`, `description`, `imageid`, `unit_b
 	(13, 1373720266, '', 0, 0, 0.00, 0.00, 0.00, 0),
 	(14, 1373722292, '', 0, 0, 0.00, 0.00, 0.00, 0);
 /*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
+
+
+-- Structuur van  tabel minifydb.server wordt geschreven
+CREATE TABLE IF NOT EXISTS `server` (
+  `serverid` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0: Offline, 1: Online, 2: Restart, 3: Start, 4: Stop',
+  PRIMARY KEY (`serverid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumpen data van tabel minifydb.server: ~0 rows (ongeveer)
+DELETE FROM `server`;
+/*!40000 ALTER TABLE `server` DISABLE KEYS */;
+INSERT INTO `server` (`serverid`, `status`) VALUES
+	(1, 0);
+/*!40000 ALTER TABLE `server` ENABLE KEYS */;
 
 
 -- Structuur van  tabel minifydb.user wordt geschreven
@@ -300,13 +330,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(64) DEFAULT NULL,
   `role` enum('normal','admin','owner') DEFAULT 'normal',
   `gender` enum('Male','Female') NOT NULL,
-  `lastvisit_date` timestamp NULL DEFAULT 0,
-  `add_date` timestamp NULL DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
+  `lastvisit_date` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  `add_date` timestamp NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.user: ~2 rows (ongeveer)
+-- Dumpen data van tabel minifydb.user: ~3 rows (ongeveer)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userid`, `username`, `name`, `email`, `birth`, `password`, `role`, `gender`, `lastvisit_date`, `add_date`) VALUES

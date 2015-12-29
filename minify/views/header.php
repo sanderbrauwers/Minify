@@ -44,7 +44,6 @@
 	<nav class="col-md-2">
 		<ul id="navigation" class="nav nav-stacked">
 			<li><a href="<?= URL ?>"><i class="fa fa-home fa-fw"></i> Dashboard</a></li>
-			<li><a href="<?= URL ?>user"><i class="fa fa-group fa-fw"></i> Users</a></li>
 			
 			<?php 
 
@@ -52,6 +51,9 @@
 				if($value['is_active'] === 'true'){
 					switch ($value['name'])
 					{
+            case 'user':
+              echo "<li><a href=". URL ."user><i class='fa fa-group fa-fw'></i> Users</a></li>";
+              break;
 						case 'blog':
 							echo "<li><a href=". URL ."blog><i class='fa fa-thumb-tack fa-fw'></i> Blog</a></li>";
 							break;
@@ -64,13 +66,18 @@
 						case 'purchase': 
 							echo "<li><a href=". URL ."purchase><i class='fa fa-truck fa-fw'></i> Orders*</a></li>";
 							break;
+            case 'teamspeak': 
+              echo "<li><a href=". URL ."teamspeak><i class='fa fa-microphone fa-fw'></i> Teamspeak</a></li>";
+              break;
+            case 'image': 
+              echo "<li><a href=". URL ."image><i class='fa fa-picture-o fa-fw'></i> Images</a></li>";
+              break;
 					} 
 				}
 			}
 		?>
 
-    <li><a href="<?php echo URL; ?>image"><i class="fa fa-picture-o fa-fw"></i> Images</a></li> 
-		</ul>
+    
 	</nav>
 	<div class="col-md-10">
 		<div class="breadcrumb">

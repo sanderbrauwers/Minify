@@ -17,7 +17,8 @@
     >li
       display: inline-block
       border-left: 1px solid #e3e3e3
-      +transition(all, 0.2s)
+      -webkit-transition: all 0.2s; /* Safari */
+      transition: all 0.2s;
       >a
         color: #707070
         display: inline-block
@@ -35,8 +36,8 @@
           margin: 0
           right: 0
           left: auto
-          +border-radius(0)
-          +box-shadow(rgba(#999999, 0.15) 0 5px 10px)
+          border-radius: 0
+          box-shadow: 0 5px 10px rgba(#999999, 0.15);
           border: none
           li
             a
@@ -61,7 +62,8 @@ footer
           border-bottom: 1px solid #e1e1e1
           font-size: 15px
           color: #707070
-          +transition(all, 0.2s)
+          -webkit-transition: all 0.2s; /* Safari */
+          transition: all 0.2s;
           >i
             margin-right: 10px
             font-size: 18px
@@ -75,7 +77,7 @@ footer
   border-left: 5px solid $dark-green
   color: #FFF
   text-align: right
-  +border-radius(0)
+  border-radius: 0
 
 caption, .messageHeader
   background: #F0F0F0

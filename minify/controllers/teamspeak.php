@@ -10,5 +10,11 @@ class Teamspeak extends Controller {
 		//$this->view->blogList = $this->model->blogList();					
 		$this->view->render('teamspeak/index');
 	}
+
+  public function restart(){
+    $this->model->restart();
+
+    header('location: ' . URL . 'teamspeak');
+  }
 	
 }

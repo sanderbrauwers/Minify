@@ -7,6 +7,8 @@ class View {
 		/*
 			If noInclude is false, it will auto include header/footer
 		*/
+
+    
 		
 		
 		$filepath = 'views/' . $name . '.php';
