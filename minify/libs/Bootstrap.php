@@ -29,6 +29,8 @@ class Bootstrap {
 			  1 => string 'add' (length=3)
 
 		*/
+		
+
 		if (empty($this->_url[0])) {
 			$this->_loadDefaultController();
 			return false;

@@ -8,8 +8,10 @@ class View {
 			If noInclude is false, it will auto include header/footer
 		*/
 		
+		
 		$filepath = 'views/' . $name . '.php';
 
+		
 		if (file_exists($filepath)) {
 			if($noInclude){
 				//Render without header/footer

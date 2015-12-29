@@ -15,7 +15,7 @@ class Controller {
 			$this->view->render('error/footer');
 			exit();  
 		}
-
+		
 		$this->view->modules = $this->db->select('SELECT * FROM mini_modules');
 	}
     
@@ -27,6 +27,8 @@ class Controller {
 	public function loadModel($name, $modelPath = 'models/') {
 		$path = $modelPath . $name.'_model.php';
         
+        
+		
 		if (file_exists($path)) {
 
 			$module_active = $this->db->select('SELECT * FROM mini_Modules WHERE name = :name', array(':name' => $name));
