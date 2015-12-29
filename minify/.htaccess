@@ -17,3 +17,5 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
 #max file size
 #php_value upload_max_filesize 5M
+
+*.json
