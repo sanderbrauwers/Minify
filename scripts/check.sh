@@ -1,2 +1,2 @@
-while inotifywait -e create /tmp; do python3 script.py
+while inotifywait -e create /var/www/html/webapp/minify/data; do python3 server.py
 done
