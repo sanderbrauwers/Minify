@@ -6,7 +6,7 @@ with open('../minify/data/status.json') as data_file:
 
 for server in data:
   print('Restarting server')
-  os.popen('service ts3server restart',"r")
+  p = os.popen('service ts3server restart',"r")
   while 1:
     line = p.readline()
     if not line: break
