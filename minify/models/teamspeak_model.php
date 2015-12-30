@@ -13,10 +13,7 @@ class Teamspeak_Model extends Model{
 		$response = array(
                     array(
                       'serverid'  => 1, 
-                      'status'    => 2),
-                    array(
-                      'serverid'  => 3, 
-                      'status'    => 0)
+                      'status'    => 2)
                   );
 
     $fp = fopen('data/status.json', 'w');
