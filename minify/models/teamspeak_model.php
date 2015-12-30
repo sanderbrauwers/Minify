@@ -10,13 +10,16 @@ class Teamspeak_Model extends Model{
 
     echo getcwd() . "\n";
 
-		$response[] = array(
+		$response = array(
                     array(
                       'serverid'  => 1, 
-                      'status'    => 2)
+                      'status'    => 2),
+                    array(
+                      'serverid'  => 3, 
+                      'status'    => 0)
                   );
 
-    $fp = fopen('status.json', 'w');
+    $fp = fopen('data/status.json', 'w');
     fwrite($fp, json_encode($response));
     fclose($fp);
 	}
