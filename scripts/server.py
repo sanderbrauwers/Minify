@@ -6,6 +6,7 @@ with open('../minify/data/status.json') as data_file:
 
 for server in data:
   print('Restarting server')
+  os.popen('service ts3server restart',"r")
   #pprint(server['serverid'])
   print('Trying to delete json file..')
   #os.remove('C:\wamp\www\webapp\minify\data')
