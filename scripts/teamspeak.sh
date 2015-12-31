@@ -9,13 +9,14 @@ update-rc.d ts3server enable
 service ts3server start
 
 
+
 ------------------------------------------------------------------
                       I M P O R T A N T
 ------------------------------------------------------------------
                Server Query Admin Account created
          loginname= "serveradmin", password= "+gApN6ue"
 ------------------------------------------------------------------
-
+bXfjHR3o
 
 ------------------------------------------------------------------
                       I M P O R T A N T

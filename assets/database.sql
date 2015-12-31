@@ -16,6 +16,7 @@ USE `minifydb`;
 
 
 -- Structuur van  tabel minifydb.blog wordt geschreven
+DROP TABLE IF EXISTS `blog`;
 CREATE TABLE IF NOT EXISTS `blog` (
   `blogid` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
@@ -38,6 +39,7 @@ INSERT INTO `blog` (`blogid`, `userid`, `title`, `content`, `add_date`, `modify_
 
 
 -- Structuur van  tabel minifydb.contact wordt geschreven
+DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
   `contactid` int(10) NOT NULL AUTO_INCREMENT,
   `fname` varchar(60) DEFAULT NULL,
@@ -63,6 +65,7 @@ INSERT INTO `contact` (`contactid`, `fname`, `lname`, `street`, `nr`, `postcode`
 
 
 -- Structuur van  tabel minifydb.image wordt geschreven
+DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
   `imageid` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -91,6 +94,7 @@ INSERT INTO `image` (`imageid`, `title`, `description`, `add_date`, `type`, `ext
 
 
 -- Structuur van  tabel minifydb.message wordt geschreven
+DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `messageid` int(11) NOT NULL AUTO_INCREMENT,
   `senderid` int(11) NOT NULL,
@@ -122,6 +126,7 @@ INSERT INTO `message` (`messageid`, `senderid`, `receiverid`, `subject`, `topic_
 
 
 -- Structuur van  tabel minifydb.mini_log wordt geschreven
+DROP TABLE IF EXISTS `mini_log`;
 CREATE TABLE IF NOT EXISTS `mini_log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
@@ -133,9 +138,9 @@ CREATE TABLE IF NOT EXISTS `mini_log` (
   `data` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`logid`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.mini_log: ~18 rows (ongeveer)
+-- Dumpen data van tabel minifydb.mini_log: ~24 rows (ongeveer)
 DELETE FROM `mini_log`;
 /*!40000 ALTER TABLE `mini_log` DISABLE KEYS */;
 INSERT INTO `mini_log` (`logid`, `userid`, `action`, `type`, `ipadress`, `date`, `link`, `data`) VALUES
@@ -161,11 +166,15 @@ INSERT INTO `mini_log` (`logid`, `userid`, `action`, `type`, `ipadress`, `date`,
 	(24, 11, 'logged in', 'user', '::1', '2015-12-29 10:09:05', NULL, NULL),
 	(25, 11, 'logged in', 'user', '::1', '2015-12-29 12:59:15', NULL, NULL),
 	(26, 11, 'logged in', 'user', '::1', '2015-12-29 16:17:36', NULL, NULL),
-	(27, 11, 'logged in', 'user', '::1', '2015-12-29 16:37:09', NULL, NULL);
+	(27, 11, 'logged in', 'user', '::1', '2015-12-29 16:37:09', NULL, NULL),
+	(28, 11, 'logged in', 'user', '::1', '2015-12-29 18:16:32', NULL, NULL),
+	(29, 11, 'logged in', 'user', '::1', '2015-12-30 14:15:06', NULL, NULL),
+	(30, 2, 'logged in', 'user', '::1', '2015-12-31 09:35:00', NULL, NULL);
 /*!40000 ALTER TABLE `mini_log` ENABLE KEYS */;
 
 
 -- Structuur van  tabel minifydb.mini_modules wordt geschreven
+DROP TABLE IF EXISTS `mini_modules`;
 CREATE TABLE IF NOT EXISTS `mini_modules` (
   `moduleid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -183,11 +192,12 @@ INSERT INTO `mini_modules` (`moduleid`, `name`, `is_active`) VALUES
 	(4, 'purchase', 'false'),
 	(5, 'teamspeak', 'true'),
 	(6, 'image', 'false'),
-	(7, 'user', 'false');
+	(7, 'user', 'true');
 /*!40000 ALTER TABLE `mini_modules` ENABLE KEYS */;
 
 
 -- Structuur van  tabel minifydb.order_detail wordt geschreven
+DROP TABLE IF EXISTS `order_detail`;
 CREATE TABLE IF NOT EXISTS `order_detail` (
   `orderdetail_id` int(10) NOT NULL AUTO_INCREMENT,
   `purchaseid` int(10) NOT NULL DEFAULT '0',
@@ -218,6 +228,7 @@ INSERT INTO `order_detail` (`orderdetail_id`, `purchaseid`, `productid`, `curren
 
 
 -- Structuur van  tabel minifydb.page wordt geschreven
+DROP TABLE IF EXISTS `page`;
 CREATE TABLE IF NOT EXISTS `page` (
   `pageid` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
@@ -239,6 +250,7 @@ INSERT INTO `page` (`pageid`, `title`, `title_alias`, `content`, `modify_date`, 
 
 
 -- Structuur van  tabel minifydb.product wordt geschreven
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `productid` int(10) NOT NULL AUTO_INCREMENT,
   `ref_number` varchar(50) NOT NULL,
@@ -282,6 +294,7 @@ INSERT INTO `product` (`productid`, `ref_number`, `name`, `description`, `imagei
 
 
 -- Structuur van  tabel minifydb.purchase wordt geschreven
+DROP TABLE IF EXISTS `purchase`;
 CREATE TABLE IF NOT EXISTS `purchase` (
   `purchaseid` int(10) NOT NULL AUTO_INCREMENT,
   `title` int(10) NOT NULL,
@@ -306,21 +319,24 @@ INSERT INTO `purchase` (`purchaseid`, `title`, `description`, `imageid`, `unit_b
 
 
 -- Structuur van  tabel minifydb.server wordt geschreven
+DROP TABLE IF EXISTS `server`;
 CREATE TABLE IF NOT EXISTS `server` (
   `serverid` int(11) NOT NULL AUTO_INCREMENT,
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '0: Offline, 1: Online, 2: Restart, 3: Start, 4: Stop',
+  `message` char(255) DEFAULT NULL,
   PRIMARY KEY (`serverid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumpen data van tabel minifydb.server: ~0 rows (ongeveer)
+-- Dumpen data van tabel minifydb.server: ~1 rows (ongeveer)
 DELETE FROM `server`;
 /*!40000 ALTER TABLE `server` DISABLE KEYS */;
-INSERT INTO `server` (`serverid`, `status`) VALUES
-	(1, 0);
+INSERT INTO `server` (`serverid`, `status`, `message`) VALUES
+	(1, 0, NULL);
 /*!40000 ALTER TABLE `server` ENABLE KEYS */;
 
 
 -- Structuur van  tabel minifydb.user wordt geschreven
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `userid` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
@@ -340,9 +356,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userid`, `username`, `name`, `email`, `birth`, `password`, `role`, `gender`, `lastvisit_date`, `add_date`) VALUES
-	(2, 'sander', 'Sander', 'sander@sdesigns.be', '1992-07-22', '643b06434070200fc102f3fd35ed83a2c4ef590afd9fccfca2faca332a85d5a5', 'owner', 'Male', '2014-03-11 14:55:06', '2014-03-11 14:55:06'),
-	(4, 'luc', NULL, NULL, NULL, '1aa18aad2e62f24c513a67f265ddf33d85387b2ca5455c71a928975495326103', 'owner', '', '2014-02-11 12:19:03', '2014-02-11 12:19:31'),
-	(11, 'test', NULL, '', '0000-00-00', 'dbc63eeded5452f7ed8d11d645de459d7027d8b19742521f4460119ba7b53e24', '', 'Male', '2014-03-12 15:11:15', '2014-03-12 15:11:15');
+	(2, 'sander', 'Sander', 'sander@sdesigns.be', '1992-07-22', '3933ac1d2ef0f362f6ab11846390c0c4c02e90058dc27eb9a2aab48b2ea80586', 'owner', 'Male', '2014-03-11 14:55:06', '2015-12-31 09:35:27'),
+	(4, 'luc', NULL, NULL, NULL, '1aa18aad2e62f24c513a67f265ddf33d85387b2ca5455c71a928975495326103', 'owner', '', '2014-02-11 12:19:03', '2014-02-11 12:19:31');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -4,20 +4,46 @@ class Teamspeak_Model extends Model{
 		parent::__construct();
 	}
 	
-
-	    
 	public function restart(){
 
-    echo getcwd() . "\n";
+    //0: Offline, 1: Online, 2: Restart, 3: Start, 4: Stop
 
-		$response = array(
-                    array(
-                      'serverid'  => 1, 
-                      'status'    => 2)
-                  );
+    $serverid = 1;
 
-    $fp = fopen('data/status.json', 'w');
-    fwrite($fp, json_encode($response));
-    fclose($fp);
+    $r = $this->db->select('SELECT * FROM server WHERE serverid = :serverid AND status = 1' , array(':serverid' => $serverid));
+  
+    if($r){
+      $postData = array(
+        'status' => 2,
+        'message' => 'Restart initiated'
+      );
+        
+      $result = $this->db->update('server', $postData, "`serverid` =  {$serverid}");
+
+      echo getcwd() . "\n";
+
+      $response = array(
+                      array(
+                        'serverid'  => 1, 
+                        'status'    => 2)
+                    );
+
+      $fp = fopen('data/status.json', 'w');
+      $r = fwrite($fp, json_encode($response));
+      fclose($fp);
+      if(!$r){
+        $postData = array(
+          'status' => 1,
+          'message' => 'Failed to write Json file during restart'
+        );
+          
+        $result = $this->db->update('server', $postData, "`serverid` =  {$serverid}");
+      }
+      
+ 
+    }
+
+    
+    
 	}
 }
